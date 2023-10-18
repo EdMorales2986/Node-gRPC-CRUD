@@ -15,7 +15,7 @@ import loader from "@grpc/proto-loader";
 const pool = new Pool({
   host: "localhost",
   user: "postgres",
-  password: "26jR5x7V8P",
+  password: "postgres",
   database: "prods",
   port: "5432",
 });

@@ -1,6 +1,8 @@
 let items = [];
 // const handler = document.getElementById("handler");
 const table = document.getElementById("myTable");
+const descInput = document.getElementById("DESC");
+const idInput = document.getElementById("ID");
 
 function loadItems() {
   items.forEach((item) => {
@@ -69,42 +71,49 @@ function updateItem(id, descripcion) {
   });
 }
 
+function refresh() {
+  items = [];
+  getItems();
+}
+
+function cleanInputs() {
+  idInput.value = "";
+  descInput.value = "";
+}
+
 document.getElementById("Read").addEventListener("click", () => {
   table.innerHTML = "";
-  const id = document.getElementById("ID").value;
+  const id = idInput.value;
   if (id) {
     getItem(id);
   } else {
     getItems();
   }
+  cleanInputs();
   items = [];
 });
 
 document.getElementById("Create").addEventListener("click", () => {
   table.innerHTML = "";
-  const descripcion = document.getElementById("DESC").value;
-  document.getElementById("DESC").value = "";
+  const descripcion = descInput.value;
+  cleanInputs();
   addItem(descripcion);
-  items = [];
-  getItems();
+  refresh();
 });
 
 document.getElementById("Delete").addEventListener("click", () => {
   table.innerHTML = "";
-  const id = document.getElementById("ID").value;
-  document.getElementById("ID").value = "";
+  const id = idInput.value;
+  cleanInputs();
   deleteItem(id);
-  items = [];
-  getItems();
+  refresh();
 });
 
 document.getElementById("Update").addEventListener("click", () => {
   table.innerHTML = "";
-  const id = document.getElementById("ID").value;
-  const descripcion = document.getElementById("DESC").value;
-  document.getElementById("ID").value = "";
-  document.getElementById("DESC").value = "";
+  const id = idInput.value;
+  const descripcion = descInput.value;
+  cleanInputs();
   updateItem(id, descripcion);
-  items = [];
-  getItems();
+  refresh();
 });
