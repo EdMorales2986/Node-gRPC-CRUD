@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+service Productos {
+  rpc GetAll (Empty) returns (stream Producto);
+  rpc Get (IdRequest) returns (Producto);
+  rpc Add (AddRequest) returns (Empty);
+  rpc Update (Producto) returns (Empty);
+  rpc Delete (IdRequest) returns (Empty);
+}
+
+message Empty {
+}
+
+message IdRequest {
+  int32 id = 1;
+}
+
+message AddRequest {
+  string descripcion = 1;
+}
+
+message Producto{
+  int32 id = 1;
+  string descripcion = 2;
+}
