@@ -1,12 +1,21 @@
 import express from "express";
 import cors from "cors";
 import client from "./gRPC/gRPC_Client/gRPC_Client.js";
+import path from "path";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
 
 //Init
 const app = express();
 
 // Settings
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 app.set("port", 3000);
+app.set("views", path.join(__dirname, "./public/views"));
+app.set("view engine", "pug");
+app.use(express.static(path.join(__dirname, "./public/static")));
 
 // Middlewares
 app.use(express.urlencoded({ extended: false }));
@@ -15,7 +24,8 @@ app.use(cors());
 
 // Routes
 app.get("/", function (req, res) {
-  res.send(`http://localhost:${app.get("port")}`);
+  // res.send(`http://localhost:${app.get("port")}`);
+  res.render("crud", {});
 });
 
 app.get("/productos", function (req, res) {

@@ -1,0 +1,28 @@
+doctype HTML
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="style.css")
+        title CRUD 
+        script(type="module", src="crud.js") 
+    body 
+    div#containerA
+        form#handler
+            input(type="text", placeholder="id")#ID
+            input(type="text", placeholder="descripcion")#DESC
+        div#OPT
+            button#Create Create
+            button#Read Read
+            button#Update Update
+            button#Delete Delete 
+    div#containerB
+        table
+            thead
+                tr
+                th ID
+                th Descripcion 
+            tbody#myTable
+
+                
+                
